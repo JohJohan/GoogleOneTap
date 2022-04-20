@@ -1,0 +1,21 @@
+<h1>Home</h1>
+
+<div id="g_id_onload"
+     data-client_id="{{ google_client_id }}"
+     data-login_uri="{{ path('api.one-tab.callback') }}"
+     data-auto_select="false"
+     data-fallback-url="{{ path('home') }}"
+     data-success-url="{{ path('home') }}"
+     data-cancel_on_tap_outside="false"
+>
+</div>
+
+<script>
+    if (!origin.includes('vagrant')) {
+        window.addEventListener('load', () => {
+            const script = document.createElement('script');
+            script.src = 'https://accounts.google.com/gsi/client';
+            document.body.appendChild(script);
+        });
+    }
+</script>
